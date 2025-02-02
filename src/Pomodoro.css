@@ -9,19 +9,22 @@
   gap: 1rem;
 }
 
-.control-button {
-  /* Add your button styles here */
-}
-
 .flash-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: yellow;
+  background: radial-gradient(circle, #ff4444 0%, #ff8f8f 100%);
   pointer-events: none;
   z-index: 999;
-  opacity: 0.8;
   transition: opacity 1s ease-out;
+}
+
+.flash-visible {
+  opacity: 0.5;
+}
+
+.flash-hidden {
+  opacity: 0;
 }

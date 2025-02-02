@@ -1,6 +1,7 @@
 import { TimerDisplay } from "./components/TimerDisplay";
 
 import { useTimer } from "./hooks/useTimer";
+import { isDevelopment } from "./utils/env";
 import "./Pomodoro.css";
 
 const TIMER_DURATIONS = {
@@ -18,7 +19,14 @@ export default function Pomodoro() {
     toggleTimer,
     resetTimer,
     startTimerForDuration,
+    setSeconds,
   } = useTimer({ initialDuration: TIMER_DURATIONS.WORK });
+
+  const startTestTimer = () => {
+    startTimerForDuration(0);
+    setSeconds(1);
+    toggleTimer();
+  };
 
   return (
     <>
@@ -50,9 +58,16 @@ export default function Pomodoro() {
           >
             25 Min Work
           </button>
+          {isDevelopment() && (
+            <button onClick={startTestTimer} className='control-button'>
+              Test 1 Sec Timer
+            </button>
+          )}
         </div>
       </div>
-      {flash && <div className='flash-overlay' />}
+      <div
+        className={`flash-overlay ${flash ? "flash-visible" : "flash-hidden"}`}
+      />
     </>
   );
 }

@@ -58,5 +58,6 @@ export function useTimer({ initialDuration }: UseTimerProps) {
     toggleTimer,
     resetTimer,
     startTimerForDuration,
+    setSeconds,
   };
 }
